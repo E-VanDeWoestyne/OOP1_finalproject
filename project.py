@@ -12,3 +12,6 @@ class Doctor:
 
     def get_doctor_name(self):
         print(f"{self.name}")
+
+    def get_doctor_specialization(self):
+        print(f"{self.get_doctor_specialization}")
