@@ -7,6 +7,9 @@ class Doctor:
         self.qualification = qualification
         self.room_number = room_number
 
+    def __str__(self):
+        return f"{self.doctor_id}_{self.name}_{self.specialization}_{self.worktime}_{self.qualification}_{self.room_number}"
+
     def get_doctor_id(self):
         print(f"{self.doctor_id}")
 
