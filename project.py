@@ -54,3 +54,12 @@ class DoctorManager:
     def format_dr_info(self, doctor):
         return f"{doctor.doctor_id}_{doctor.name}_{doctor.specialization}_{doctor.worktime}_{doctor.qualification}_{doctor.room_number}"
 
+    def enter_dr_info(self, new_doctor):
+        doctor_id = input("Enter the doctor's ID: ")
+        doctor_name = input("Enter the doctor's name: ")
+        doctor_specialty = input("Enter the doctor's specility: ")
+        doctor_timing = input("Enter the doctor's timing (e.g., 7am-10pm): ")
+        doctor_qualification = input("Enter the doctor's qualification: ")
+        doctor_room_number = input("Enter the doctor's room number: ")
+        new_doctor = Doctor(doctor_id, doctor_name, doctor_specialty, doctor_timing, doctor_qualification, doctor_room_number)
+        return new_doctor
