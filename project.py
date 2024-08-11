@@ -73,3 +73,16 @@ class DoctorManager:
             part = line.split('_')
             new_doctor = Doctor(part[0], part[1], part[2], part[3], part[4], part[5])
             self.list_of_doctors.append(part)
+
+    def search_doctor_by_id(self):
+        id_search_match = False
+        search_id = input("Enter the doctor ID: ")
+        for doctor in self.list_of_doctors:
+            if doctor[0] == search_id:
+                doctor_index = doctor
+                id_search_match = True
+        if id_search_match == True:
+            print(f"{"Id":<5}{"Name":<23}{"Speciality":<16}{"Timing":<16}{"Qualification":<16}Room Number")
+            print(f"{doctor_index[0]:<5}{doctor_index[1]:<23}{doctor_index[2]:<16}{doctor_index[3]:<16}{doctor_index[4]:<16}{doctor_index[5]}")
+        else:
+            print("Can't find the doctor with the same ID on the system")
