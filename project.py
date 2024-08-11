@@ -21,3 +21,6 @@ class Doctor:
 
     def get_doctor_qualification(self):
         print(f"{self.get_doctor_qualification}")
+
+    def get_doctor_room_number(self):
+        print(f"{self.get_doctor_room_number}")
