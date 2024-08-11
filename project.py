@@ -9,3 +9,6 @@ class Doctor:
 
     def get_doctor_id(self):
         print(f"{self.doctor_id}")
+
+    def get_doctor_name(self):
+        print(f"{self.name}")
