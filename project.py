@@ -15,3 +15,6 @@ class Doctor:
 
     def get_doctor_specialization(self):
         print(f"{self.get_doctor_specialization}")
+
+    def get_doctor_worktime(self):
+        print(f"{self.get_doctor_worktime}")
