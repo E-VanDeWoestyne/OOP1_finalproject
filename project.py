@@ -63,3 +63,13 @@ class DoctorManager:
         doctor_room_number = input("Enter the doctor's room number: ")
         new_doctor = Doctor(doctor_id, doctor_name, doctor_specialty, doctor_timing, doctor_qualification, doctor_room_number)
         return new_doctor
+
+    def read_doctors_file(self):
+        with open('doctors.txt', 'r') as doctorfile:
+            content = doctorfile.read().strip()
+        lines = content.splitlines()
+        lines.pop(0)
+        for line in lines:
+            part = line.split('_')
+            new_doctor = Doctor(part[0], part[1], part[2], part[3], part[4], part[5])
+            self.list_of_doctors.append(part)
