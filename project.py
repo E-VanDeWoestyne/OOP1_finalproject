@@ -50,3 +50,7 @@ class DoctorManager:
     def __init__(self):
         self.list_of_doctors = []
         self.read_doctors_file()
+    
+    def format_dr_info(self, doctor):
+        return f"{doctor.doctor_id}_{doctor.name}_{doctor.specialization}_{doctor.worktime}_{doctor.qualification}_{doctor.room_number}"
+
