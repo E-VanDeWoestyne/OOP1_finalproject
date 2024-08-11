@@ -45,3 +45,8 @@ class Doctor:
 
     def set_doctor_room_number(self, new_room_number):
         self.room_number = new_room_number
+
+class DoctorManager:
+    def __init__(self):
+        self.list_of_doctors = []
+        self.read_doctors_file()
