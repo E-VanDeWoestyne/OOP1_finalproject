@@ -86,3 +86,16 @@ class DoctorManager:
             print(f"{doctor_index[0]:<5}{doctor_index[1]:<23}{doctor_index[2]:<16}{doctor_index[3]:<16}{doctor_index[4]:<16}{doctor_index[5]}")
         else:
             print("Can't find the doctor with the same ID on the system")
+
+    def search_doctor_by_name(self):
+        name_search_match = False
+        search_name = input("Enter the doctor name: ")
+        for doctor in self.list_of_doctors:
+            if doctor[0] == search_name:
+                doctor_index = doctor
+                name_search_match = True
+        if name_search_match == True:
+            print(f"{"Id":<5}{"Name":<23}{"Speciality":<16}{"Timing":<16}{"Qualification":<16}Room Number")
+            print(f"{doctor_index[0]:<5}{doctor_index[1]:<23}{doctor_index[2]:<16}{doctor_index[3]:<16}{doctor_index[4]:<16}{doctor_index[5]}")
+        else:
+            print("Can't find the doctor with the same name on the system")
