@@ -99,3 +99,7 @@ class DoctorManager:
             print(f"{doctor_index[0]:<5}{doctor_index[1]:<23}{doctor_index[2]:<16}{doctor_index[3]:<16}{doctor_index[4]:<16}{doctor_index[5]}")
         else:
             print("Can't find the doctor with the same name on the system")
+
+    def display_doctor_info(self, doctor_index):
+            print(f"{"Id":<5}{"Name":<23}{"Speciality":<16}{"Timing":<16}{"Qualification":<16}Room Number\n")
+            print(f"{doctor_index[0]:<5}{doctor_index[1]:<23}{doctor_index[2]:<16}{doctor_index[3]:<16}{doctor_index[4]:<16}{doctor_index[5]}")
