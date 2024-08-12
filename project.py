@@ -102,3 +102,20 @@ class DoctorManager:
     def display_doctor_info(self, doctor_index):
             print(f"{"Id":<5}{"Name":<23}{"Speciality":<16}{"Timing":<16}{"Qualification":<16}Room Number\n")
             print(f"{doctor_index.get_doctor_id:<5}{doctor_index.get_doctor_name:<23}{doctor_index.get_doctor_specialization:<16}{doctor_index.get_doctor_worktime:<16}{doctor_index.get_doctor_qualification:<16}{doctor_index.get_doctor_room_number}")
+
+    def edit_dr_info(self):
+        id_search_match = False
+        search_id = input("Please enter the id of the doctor that you want to edit their information: ")
+        for doctor in self.list_of_doctors:
+            if doctor.get_doctor_id == search_id:
+                doctor_index = doctor
+                id_search_match = True
+        if id_search_match == True:
+            doctor_index.set_doctor_name(input("Enter new Name: "))
+            doctor_index.set_doctor_specialization(input("Enter new Specialty: "))
+            doctor_index.set_doctor_worktime(input("Enter new Timing: "))
+            doctor_index.set_doctor_qualification(input("Enter new Qualification: "))
+            doctor_index.set_doctor_room_number(input("Enter new Room number: "))
+            print(f"\nDoctor whose ID is {search_id} has been edited")
+        else:
+            print("Can't find the doctor with the same ID on the system")
