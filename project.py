@@ -62,7 +62,6 @@ class DoctorManager:
         doctor_qualification = input("Enter the doctor's qualification: ")
         doctor_room_number = input("Enter the doctor's room number: ")
         new_doctor = Doctor(doctor_id, doctor_name, doctor_specialty, doctor_timing, doctor_qualification, doctor_room_number)
-        self.list_of_doctors.append(new_doctor)
         return new_doctor
 
     def read_doctors_file(self):
