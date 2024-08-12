@@ -11,22 +11,22 @@ class Doctor:
         return f"{self.doctor_id}_{self.name}_{self.specialization}_{self.worktime}_{self.qualification}_{self.room_number}"
 
     def get_doctor_id(self):
-        print(f"{self.doctor_id}")
+        return(f"{self.doctor_id}")
 
     def get_doctor_name(self):
-        print(f"{self.name}")
+        return(f"{self.name}")
 
     def get_doctor_specialization(self):
-        print(f"{self.specialization}")
+        return(f"{self.specialization}")
 
     def get_doctor_worktime(self):
-        print(f"{self.worktime}")
+        return(f"{self.worktime}")
 
     def get_doctor_qualification(self):
-        print(f"{self.qualification}")
+        return(f"{self.qualification}")
 
     def get_doctor_room_number(self):
-        print(f"{self.room_number}")
+        return(f"{self.room_number}")
 
     def set_doctor_id(self, new_id):
         self.doctor_id = new_id
@@ -67,22 +67,22 @@ class DoctorManager:
     def read_doctors_file(self):
         with open('doctors.txt', 'r') as doctorfile:
             content = doctorfile.read().strip()
-        lines = content.splitlines()
-        lines.pop(0)
-        for line in lines:
-            part = line.split('_')
-            new_doctor = Doctor(part[0], part[1], part[2], part[3], part[4], part[5])
-            self.list_of_doctors.append(new_doctor)
+            lines = content.splitlines()
+            lines.pop(0)
+            for line in lines:
+                part = line.split('_')
+                new_doctor = Doctor(part[0], part[1], part[2], part[3], part[4], part[5])
+                self.list_of_doctors.append(new_doctor)
 
     def search_doctor_by_id(self):
         id_search_match = False
         search_id = input("Enter the doctor ID: ")
         for doctor in self.list_of_doctors:
-            if doctor.get_doctor_id == search_id:
+            if doctor.get_doctor_id() == search_id:
                 doctor_index = doctor
                 id_search_match = True
         if id_search_match == True:
-            display_doctor_info(doctor_index)
+            self.display_doctor_info(doctor_index)
         else:
             print("Can't find the doctor with the same ID on the system")
 
@@ -90,11 +90,11 @@ class DoctorManager:
         name_search_match = False
         search_name = input("Enter the doctor name: ")
         for doctor in self.list_of_doctors:
-            if doctor.get_doctor_name == search_name:
+            if doctor.get_doctor_name() == search_name:
                 doctor_index = doctor
                 name_search_match = True
         if name_search_match == True:
-            display_doctor_info(doctor_index)
+            self.display_doctor_info(doctor_index)
         else:
             print("Can't find the doctor with the same name on the system")
 
@@ -106,7 +106,7 @@ class DoctorManager:
         id_search_match = False
         search_id = input("Please enter the id of the doctor that you want to edit their information: ")
         for doctor in self.list_of_doctors:
-            if doctor.get_doctor_id == search_id:
+            if doctor.get_doctor_id() == search_id:
                 doctor_index = doctor
                 id_search_match = True
         if id_search_match == True:
@@ -115,6 +115,7 @@ class DoctorManager:
             doctor_index.set_doctor_worktime(input("Enter new Timing: "))
             doctor_index.set_doctor_qualification(input("Enter new Qualification: "))
             doctor_index.set_doctor_room_number(input("Enter new Room number: "))
+            self.write_list_of_doctors_to_file()
             print(f"\nDoctor whose ID is {search_id} has been edited")
         else:
             print("Can't find the doctor with the same ID on the system")
@@ -122,19 +123,19 @@ class DoctorManager:
     def display_doctors_list(self):
             print(f"{"Id":<5}{"Name":<23}{"Speciality":<16}{"Timing":<16}{"Qualification":<16}Room Number\n")
             for doctor_index in self.list_of_doctors:
-                print(f"{doctor_index.get_doctor_id():<5}{doctor_index.get_doctor_name():<23}{doctor_index.get_doctor_specialization():<16}{doctor_index.get_doctor_worktime():<16}{doctor_index.get_doctor_qualification():<16}{doctor_index.get_doctor_room_number()}")
+                print(f"{(doctor_index.get_doctor_id()):<5}{(doctor_index.get_doctor_name()):<23}{(doctor_index.get_doctor_specialization()):<16}{(doctor_index.get_doctor_worktime()):<16}{(doctor_index.get_doctor_qualification()):<16}{doctor_index.get_doctor_room_number()}")
 
     def write_list_of_doctors_to_file(self):
         with open('doctors.txt', 'w') as doctorfile:
             doctorfile.write("id_name_specilist_timing_qualification_roomNb")
-            for doctor in list_of_doctors:
+            for doctor in self.list_of_doctors:
                 doctorfile.write(f"\n{str(doctor)}")
 
     def add_dr_to_file(self):
-        new_doctor = enter_dr_info()
+        new_doctor = self.enter_dr_info()
         self.list_of_doctors.append(new_doctor)
         with open('doctors.txt', 'a') as doctorfile:
-            doctorfile.write(f"\n{str(doctor)}")
+            doctorfile.write(f"\n{str(new_doctor)}")
         print(f"\nDoctor whose ID is {new_doctor.get_doctor_id()} has been added")
 
 class Manager:
