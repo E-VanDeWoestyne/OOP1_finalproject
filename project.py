@@ -1,5 +1,5 @@
 class Doctor:
-    def __init__(self, doctor_id, name, specialization, worktime, qualification, room_number):
+    def __init__(self, doctor_id=None, name=None, specialization=None, worktime=None, qualification=None, room_number=None):
         self.doctor_id = doctor_id
         self.name = name
         self.specialization = specialization
@@ -17,16 +17,16 @@ class Doctor:
         print(f"{self.name}")
 
     def get_doctor_specialization(self):
-        print(f"{self.get_doctor_specialization}")
+        print(f"{self.specialization}")
 
     def get_doctor_worktime(self):
-        print(f"{self.get_doctor_worktime}")
+        print(f"{self.worktime}")
 
     def get_doctor_qualification(self):
-        print(f"{self.get_doctor_qualification}")
+        print(f"{self.qualification}")
 
     def get_doctor_room_number(self):
-        print(f"{self.get_doctor_room_number}")
+        print(f"{self.room_number}")
 
     def set_doctor_id(self, new_id):
         self.doctor_id = new_id
