@@ -101,7 +101,7 @@ class DoctorManager:
 
     def display_doctor_info(self, doctor_index):
             print(f"{"Id":<5}{"Name":<23}{"Speciality":<16}{"Timing":<16}{"Qualification":<16}Room Number\n")
-            print(f"{doctor_index.get_doctor_id:<5}{doctor_index.get_doctor_name:<23}{doctor_index.get_doctor_specialization:<16}{doctor_index.get_doctor_worktime:<16}{doctor_index.get_doctor_qualification:<16}{doctor_index.get_doctor_room_number}")
+            print(f"{doctor_index.get_doctor_id():<5}{doctor_index.get_doctor_name():<23}{doctor_index.get_doctor_specialization():<16}{doctor_index.get_doctor_worktime():<16}{doctor_index.get_doctor_qualification():<16}{doctor_index.get_doctor_room_number()}")
 
     def edit_dr_info(self):
         id_search_match = False
@@ -123,7 +123,7 @@ class DoctorManager:
     def display_doctors_list(self):
             print(f"{"Id":<5}{"Name":<23}{"Speciality":<16}{"Timing":<16}{"Qualification":<16}Room Number\n")
             for doctor_index in self.list_of_doctors:
-                print(f"{doctor_index.get_doctor_id:<5}{doctor_index.get_doctor_name:<23}{doctor_index.get_doctor_specialization:<16}{doctor_index.get_doctor_worktime:<16}{doctor_index.get_doctor_qualification:<16}{doctor_index.get_doctor_room_number}")
+                print(f"{doctor_index.get_doctor_id():<5}{doctor_index.get_doctor_name():<23}{doctor_index.get_doctor_specialization():<16}{doctor_index.get_doctor_worktime():<16}{doctor_index.get_doctor_qualification():<16}{doctor_index.get_doctor_room_number()}")
 
     def write_list_of_doctors_to_file(self):
         with open('tempdoc.txt', 'w') as doctorfile:
