@@ -124,3 +124,9 @@ class DoctorManager:
             print(f"{"Id":<5}{"Name":<23}{"Speciality":<16}{"Timing":<16}{"Qualification":<16}Room Number\n")
             for doctor_index in self.list_of_doctors:
                 print(f"{doctor_index.get_doctor_id:<5}{doctor_index.get_doctor_name:<23}{doctor_index.get_doctor_specialization:<16}{doctor_index.get_doctor_worktime:<16}{doctor_index.get_doctor_qualification:<16}{doctor_index.get_doctor_room_number}")
+
+    def write_list_of_doctors_to_file():
+    with open('tempdoc.txt', 'w') as doctorfile:
+        doctorfile.write("id_name_specilist_timing_qualification_roomNb")
+        for doctor in list_of_doctors:
+            doctorfile.write(f"\n{str(doctor)}")
