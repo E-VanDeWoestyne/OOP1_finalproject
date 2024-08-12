@@ -125,7 +125,14 @@ class DoctorManager:
                 print(f"{doctor_index.get_doctor_id():<5}{doctor_index.get_doctor_name():<23}{doctor_index.get_doctor_specialization():<16}{doctor_index.get_doctor_worktime():<16}{doctor_index.get_doctor_qualification():<16}{doctor_index.get_doctor_room_number()}")
 
     def write_list_of_doctors_to_file(self):
-        with open('tempdoc.txt', 'w') as doctorfile:
+        with open('doctors.txt', 'w') as doctorfile:
             doctorfile.write("id_name_specilist_timing_qualification_roomNb")
             for doctor in list_of_doctors:
                 doctorfile.write(f"\n{str(doctor)}")
+
+    def add_dr_to_file(self):
+        new_doctor = enter_dr_info()
+        self.list_of_doctors.append(new_doctor)
+        with open('doctors.txt', 'a') as doctorfile:
+            doctorfile.write(f"\n{str(doctor)}")
+        print(f"\nDoctor whose ID is {new_doctor.get_doctor_id()} has been added")
