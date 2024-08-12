@@ -72,7 +72,7 @@ class DoctorManager:
         for line in lines:
             part = line.split('_')
             new_doctor = Doctor(part[0], part[1], part[2], part[3], part[4], part[5])
-            self.list_of_doctors.append(part)
+            self.list_of_doctors.append(new_doctor)
 
     def search_doctor_by_id(self):
         id_search_match = False
