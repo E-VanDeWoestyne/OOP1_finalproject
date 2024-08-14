@@ -138,41 +138,6 @@ class DoctorManager:
             doctorfile.write(f"\n{str(new_doctor)}")
         print(f"\nDoctor whose ID is {new_doctor.get_doctor_id()} has been added")
 
-class Manager:
-    @staticmethod
-    def display_menu():
-        main_flag = True
-        while main_flag == True:
-            doc_manager_instance = DoctorManager()
-            print("Welcome to Alberta Hospital (AH) Managment system\nSelect from the following options, or select 3 to stop:\n1 - 	Doctors\n2 - 	Patients\n3 -	Exit Program")
-            main_input = input(">>> ")
-
-            if main_input == "1":
-                doctor_flag = True
-                while doctor_flag == True:
-                    print("Doctors Menu:\n1 - Display Doctors list\n2 - Search for doctor by ID\n3 - Search for doctor by name\n4 - Add doctor\n5 - Edit doctor info\n6 - Back to the Main Menu")
-                    doctor_input = input(">>> ")
-                    if doctor_input == "1":
-                        doc_manager_instance.display_doctors_list()
-                    elif doctor_input == "2":
-                        doc_manager_instance.search_doctor_by_id()
-                    elif doctor_input == "3":
-                        doc_manager_instance.search_doctor_by_name()
-                    elif doctor_input == "4":
-                        doc_manager_instance.add_dr_to_file()
-                    elif doctor_input == "5":
-                        doc_manager_instance.edit_dr_info()
-                    elif doctor_input == "6":
-                        doctor_flag = False
-            
-            elif main_input == "2":
-                patient_flag = True
-            
-            elif main_input == "3":
-                main_flag = False
-                print("Thanks for using the program. Bye!")
-
-
 class Patient:
     #constroctor with attributes
     def __init__(self, pid=None, name=None, disease=None, gender=None, age=None ):
@@ -300,5 +265,42 @@ class PatientManager:
         self.list_of_patients.append(patient)
         with open('doctors.txt', 'a') as patientfile:
             patientfile.write(f"\n{self.format_patient_Info_for_file(patient)}")
+
+class Manager:
+    @staticmethod
+    def display_menu():
+        main_flag = True
+        while main_flag == True:
+            doc_manager_instance = DoctorManager()
+            print("Welcome to Alberta Hospital (AH) Managment system\nSelect from the following options, or select 3 to stop:\n1 - 	Doctors\n2 - 	Patients\n3 -	Exit Program")
+            main_input = input(">>> ")
+
+            if main_input == "1":
+                doctor_flag = True
+                while doctor_flag == True:
+                    print("Doctors Menu:\n1 - Display Doctors list\n2 - Search for doctor by ID\n3 - Search for doctor by name\n4 - Add doctor\n5 - Edit doctor info\n6 - Back to the Main Menu")
+                    doctor_input = input(">>> ")
+                    if doctor_input == "1":
+                        doc_manager_instance.display_doctors_list()
+                    elif doctor_input == "2":
+                        doc_manager_instance.search_doctor_by_id()
+                    elif doctor_input == "3":
+                        doc_manager_instance.search_doctor_by_name()
+                    elif doctor_input == "4":
+                        doc_manager_instance.add_dr_to_file()
+                    elif doctor_input == "5":
+                        doc_manager_instance.edit_dr_info()
+                    elif doctor_input == "6":
+                        doctor_flag = False
+            
+            elif main_input == "2":
+                patient_flag = True
+            
+            elif main_input == "3":
+                main_flag = False
+                print("Thanks for using the program. Bye!")
+
+
+
 
 Manager.display_menu()
