@@ -138,54 +138,6 @@ class DoctorManager:
             doctorfile.write(f"\n{str(new_doctor)}")
         print(f"\nDoctor whose ID is {new_doctor.get_doctor_id()} has been added")
 
-class Manager:
-    @staticmethod
-    def display_menu():
-        main_flag = True
-        while main_flag == True:
-            doc_manager_instance = DoctorManager()
-            print("Welcome to Alberta Hospital (AH) Managment system\nSelect from the following options, or select 3 to stop:\n1 - 	Doctors\n2 - 	Patients\n3 -	Exit Program")
-            main_input = input(">>> ")
-
-            if main_input == "1":
-                doctor_flag = True
-                while doctor_flag == True:
-                    print("Doctors Menu:\n1 - Display Doctors list\n2 - Search for doctor by ID\n3 - Search for doctor by name\n4 - Add doctor\n5 - Edit doctor info\n6 - Back to the Main Menu")
-                    doctor_input = input(">>> ")
-                    if doctor_input == "1":
-                        doc_manager_instance.display_doctors_list()
-                    elif doctor_input == "2":
-                        doc_manager_instance.search_doctor_by_id()
-                    elif doctor_input == "3":
-                        doc_manager_instance.search_doctor_by_name()
-                    elif doctor_input == "4":
-                        doc_manager_instance.add_dr_to_file()
-                    elif doctor_input == "5":
-                        doc_manager_instance.edit_dr_info()
-                    elif doctor_input == "6":
-                        doctor_flag = False
-            
-            elif main_input == "2":
-                patient_flag = True
-            
-            elif main_input == "3":
-                main_flag = False
-                print("Thanks for using the program. Bye!")
-
-
-'''
-Constructor	__init__() should initialize the patient object properties.
-The constructor should allow creating a patient object without passing values to the constructor
-Hint: Use keyword arguments in the constructor
-Getters	Implement one getter function for each Patient property. 
-The getter function should return the value of the property. 
-Example is get_pid(self)
-Setters	Implement one setter function for each Patient  property. 
-The setter function should set the property to a new value. 
-Example is set_doctor_id(self, new_id)
-__str__()	It returns the string representation of a patient  object. 
-This representation should include all doctor properties separated by underscore (_)
-'''
 class Patient:
     #constroctor with attributes
     def __init__(self, pid=None, name=None, disease=None, gender=None, age=None ):
@@ -222,19 +174,6 @@ class Patient:
     def set_age(self, new_age):
         self.age = new_age
 
-''' 
-Method Name	Description
-
-write_list_of_patients_to_file	Writes a list of patients into the patients.txt file.
-The patient information must be formatted using format_patient_info_for_file() before writing it in the patients.txt file.
-
-add_patient_to_file	It asks the user to enter the new patient information such as id, name, disease, etc.
-Hint, use enter_patient_info() to get the patient information from the user.
-Appends the new patient object to patients list.
-Formats this information to match the patients.txt format.
-Appends the new patient to patients file.
-Confirms that a new doctor has been added
-'''
 
 class PatientManager:
     #creates a empty list and uses read_patient_files to go throught txt file of patients and add there info into a list of patient objects
@@ -278,7 +217,7 @@ class PatientManager:
         if pid_search_match == True:
             self.display_patient_info(patient_index)
         else:
-            print("Cannot find the patient ….")
+            print("Can't find the Patient with the same id on the system")
 
     #displays a specific patients info
     def display_patient_info(self, patient_index):
@@ -326,5 +265,57 @@ class PatientManager:
         self.list_of_patients.append(patient)
         with open('doctors.txt', 'a') as patientfile:
             patientfile.write(f"\n{self.format_patient_Info_for_file(patient)}")
+        print(f"Patient whose ID is {patient.get_pid} has been added.")
+
+class Manager:
+    @staticmethod
+    def display_menu():
+        main_flag = True
+        while main_flag == True:
+            print("Welcome to Alberta Hospital (AH) Managment system\nSelect from the following options, or select 3 to stop:\n1 - 	Doctors\n2 - 	Patients\n3 -	Exit Program")
+            main_input = input(">>> ")
+
+            if main_input == "1":
+                doctor_flag = True
+                while doctor_flag == True:
+                    doc_manager_instance = DoctorManager()
+                    print("Doctors Menu:\n1 - Display Doctors list\n2 - Search for doctor by ID\n3 - Search for doctor by name\n4 - Add doctor\n5 - Edit doctor info\n6 - Back to the Main Menu")
+                    doctor_input = input(">>> ")
+                    if doctor_input == "1":
+                        doc_manager_instance.display_doctors_list()
+                    elif doctor_input == "2":
+                        doc_manager_instance.search_doctor_by_id()
+                    elif doctor_input == "3":
+                        doc_manager_instance.search_doctor_by_name()
+                    elif doctor_input == "4":
+                        doc_manager_instance.add_dr_to_file()
+                    elif doctor_input == "5":
+                        doc_manager_instance.edit_dr_info()
+                    elif doctor_input == "6":
+                        doctor_flag = False
+            #if the choose patiant menue a patientmnaager is generated and it does task from user options by using methods of patiant manager 
+            elif main_input == "2":
+                patient_flag = True
+                while patient_flag == True:
+                    patient_manager_instance = PatientManager()
+                    print("Patients Menu:\n1 - Display patients list\n2 - Search for patient by ID\n3 - Add patient\n4 - Edit patient info\n5 - Back to the Main Menu")
+                    patient_input = input(">>> ")
+                    if patient_input == "1":
+                        patient_manager_instance.display_patients_list()
+                    elif patient_input == "2":
+                        patient_manager_instance.search_patient_by_id()
+                    elif patient_input == "3":
+                        patient_manager_instance.add_patient_to_file()
+                    elif patient_input == "4":
+                        patient_manager_instance.edit_patient_info_by_id()
+                    elif patient_input == "5":
+                        patient_flag = False
+            #exit out of the program and say good bye
+            elif main_input == "3":
+                main_flag = False
+                print("Thanks for using the program. Bye!")
+
+
+
 
 Manager.display_menu()
