@@ -188,7 +188,7 @@ class PatientManager:
             lines = content.splitlines()
             lines.pop(0)
             for line in lines:
-                part = line.split('_')
+                part = line.split('-')
                 new_patient = Patient(part[0], part[1], part[2], part[3], part[4])
                 self.list_of_patients.append(new_patient)
 
@@ -241,10 +241,7 @@ class PatientManager:
             patient_index.set_gender(new_gender)
             new_age = input("Enter new age: ")
             patient_index.set_age(new_age) 
-            with open('doctors.txt', 'w') as patientfile:
-                patientfile.write("id_Name_Disease_Gender_Age")
-                for patient in self.list_of_patients:
-                    patientfile.write(f"\n{str(patient)}")
+            self.write_list_of_patients_to_file()
             print(f"Patient whose ID is {search_pid} has been edited.")
         else:
             print("Cannot find the patient ….")
@@ -257,7 +254,7 @@ class PatientManager:
 
     #overwrites the patient txt and writes a formated version of list_of_patients
     def write_list_of_patients_to_file(self):
-            with open('doctors.txt', 'w') as patientfile:
+            with open('patients.txt', 'w') as patientfile:
                 patientfile.write("id_Name_Disease_Gender_Age")
                 for patient in self.list_of_patients:
                     patientfile.write(f"\n{self.format_patient_Info_for_file(patient)}")    
@@ -266,7 +263,7 @@ class PatientManager:
     def add_patient_to_file(self):
         patient = self.enter_patient_info()
         self.list_of_patients.append(patient)
-        with open('doctors.txt', 'a') as patientfile:
+        with open('patients.txt', 'a') as patientfile:
             patientfile.write(f"\n{self.format_patient_Info_for_file(patient)}")
         print(f"Patient whose ID is {patient.get_pid()} has been added.")
 
