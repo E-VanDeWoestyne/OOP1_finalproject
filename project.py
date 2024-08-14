@@ -173,19 +173,6 @@ class Manager:
                 print("Thanks for using the program. Bye!")
 
 
-'''
-Constructor	__init__() should initialize the patient object properties.
-The constructor should allow creating a patient object without passing values to the constructor
-Hint: Use keyword arguments in the constructor
-Getters	Implement one getter function for each Patient property. 
-The getter function should return the value of the property. 
-Example is get_pid(self)
-Setters	Implement one setter function for each Patient  property. 
-The setter function should set the property to a new value. 
-Example is set_doctor_id(self, new_id)
-__str__()	It returns the string representation of a patient  object. 
-This representation should include all doctor properties separated by underscore (_)
-'''
 class Patient:
     #constroctor with attributes
     def __init__(self, pid=None, name=None, disease=None, gender=None, age=None ):
@@ -222,19 +209,6 @@ class Patient:
     def set_age(self, new_age):
         self.age = new_age
 
-''' 
-Method Name	Description
-
-write_list_of_patients_to_file	Writes a list of patients into the patients.txt file.
-The patient information must be formatted using format_patient_info_for_file() before writing it in the patients.txt file.
-
-add_patient_to_file	It asks the user to enter the new patient information such as id, name, disease, etc.
-Hint, use enter_patient_info() to get the patient information from the user.
-Appends the new patient object to patients list.
-Formats this information to match the patients.txt format.
-Appends the new patient to patients file.
-Confirms that a new doctor has been added
-'''
 
 class PatientManager:
     #creates a empty list and uses read_patient_files to go throught txt file of patients and add there info into a list of patient objects
