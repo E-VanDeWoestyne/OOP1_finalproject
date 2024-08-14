@@ -217,7 +217,7 @@ class PatientManager:
         if pid_search_match == True:
             self.display_patient_info(patient_index)
         else:
-            print("Cannot find the patient ….")
+            print("Can't find the Patient with the same id on the system")
 
     #displays a specific patients info
     def display_patient_info(self, patient_index):
@@ -265,6 +265,7 @@ class PatientManager:
         self.list_of_patients.append(patient)
         with open('doctors.txt', 'a') as patientfile:
             patientfile.write(f"\n{self.format_patient_Info_for_file(patient)}")
+        print(f"Patient whose ID is {patient.get_pid} has been added.")
 
 class Manager:
     @staticmethod
@@ -292,7 +293,7 @@ class Manager:
                         doc_manager_instance.edit_dr_info()
                     elif doctor_input == "6":
                         doctor_flag = False
-            
+            #if the choose patiant menue a patientmnaager is generated and it does task from user options by using methods of patiant manager 
             elif main_input == "2":
                 patient_flag = True
                 while patient_flag == True:
@@ -309,7 +310,7 @@ class Manager:
                         patient_manager_instance.edit_patient_info_by_id()
                     elif patient_input == "5":
                         patient_flag = False
-            
+            #exit out of the program and say good bye
             elif main_input == "3":
                 main_flag = False
                 print("Thanks for using the program. Bye!")
