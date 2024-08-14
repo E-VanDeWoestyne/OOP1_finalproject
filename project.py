@@ -264,7 +264,7 @@ class PatientManager:
         self.list_of_patients.append(patient)
         with open('doctors.txt', 'a') as patientfile:
             patientfile.write(f"\n{self.format_patient_Info_for_file(patient)}")
-        print(f"Patient whose ID is {patient.get_pid} has been added.")
+        print(f"Patient whose ID is {patient.get_pid()} has been added.")
 
 class Manager:
     @staticmethod
