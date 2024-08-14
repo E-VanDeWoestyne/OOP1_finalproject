@@ -194,6 +194,10 @@ class Patient:
         self.disease = disease
         self.gender = gender
         self.age = age
+    
+    #string return for class 
+    def __str__(self):
+        return f"{self.pid}_{self.name}_{self.disease}_{self.gender}_{self.age}"
 
     #the getters
     def get_pid(self):
@@ -217,5 +221,7 @@ class Patient:
         self.age = new_gender
     def set_age(self, new_age):
         self.age = new_age
+    
+
 
 Manager.display_menu()
