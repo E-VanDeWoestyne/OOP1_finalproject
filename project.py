@@ -170,7 +170,7 @@ class Patient:
     def set_disease(self, new_disease):
         self.disease = new_disease
     def set_gender(self, new_gender):
-        self.age = new_gender
+        self.gender = new_gender
     def set_age(self, new_age):
         self.age = new_age
 
@@ -230,13 +230,17 @@ class PatientManager:
         search_pid = input("Enter the patient id you wish to edit: ")
         for patient in self.list_of_patients:
             if patient.get_pid() == search_pid:
-                patient_index = Patient
+                patient_index = patient
                 pid_search_match = True
         if pid_search_match == True:
-            patient_index.set_name(input("Enter new name: "))
-            patient_index.set_disease(input("Enter new disease: ")) 
-            patient_index.set_gender(input("Enter new gender: "))
-            patient_index.set_age(input("Enter new age: ")) 
+            new_name = input("Enter new name: ")
+            patient_index.set_name(new_name)
+            new_disease = input("Enter new disease: ")
+            patient_index.set_disease(new_disease) 
+            new_gender = input("Enter new gender: ")
+            patient_index.set_gender(new_gender)
+            new_age = input("Enter new age: ")
+            patient_index.set_age(new_age) 
             with open('doctors.txt', 'w') as patientfile:
                 patientfile.write("id_Name_Disease_Gender_Age")
                 for patient in self.list_of_patients:
@@ -264,7 +268,7 @@ class PatientManager:
         self.list_of_patients.append(patient)
         with open('doctors.txt', 'a') as patientfile:
             patientfile.write(f"\n{self.format_patient_Info_for_file(patient)}")
-        print(f"Patient whose ID is {patient.get_pid} has been added.")
+        print(f"Patient whose ID is {patient.get_pid()} has been added.")
 
 class Manager:
     @staticmethod
