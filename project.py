@@ -153,15 +153,15 @@ class Patient:
 
     #the getters
     def get_pid(self):
-        return self.pid
+        return (f"{self.pid}")
     def get_name(self):
-        return self.name
+        return (f"{self.name}")
     def get_disease(self):
-        return self.disease
+        return (f"{self.disease}")
     def get_gender(self):
-        return self.gender
+        return (f"{self.gender}")
     def get_age(self):
-        return self.age
+        return (f"{self.age}")
     #setters
     def set_pid(self, new_pid):
         self.pid = new_pid
@@ -179,7 +179,7 @@ class PatientManager:
     #creates a empty list and uses read_patient_files to go throught txt file of patients and add there info into a list of patient objects
     def __init__(self):
         self.list_of_patients = []
-        self.read_patient_file()
+        self.read_patients_file()
 
     #reads patient file
     def read_patients_file(self):
@@ -212,7 +212,7 @@ class PatientManager:
         search_pid = input("Enter the patient id: ")
         for patient in self.list_of_patients:
             if patient.get_pid() == search_pid:
-                patient_index = Patient
+                patient_index = patient
                 pid_search_match = True
         if pid_search_match == True:
             self.display_patient_info(patient_index)
@@ -222,8 +222,7 @@ class PatientManager:
     #displays a specific patients info
     def display_patient_info(self, patient_index):
             print(f"{"Id":<5}{"Name":<23}{"Disease":<16}{"Gender":<16}{"age"}\n")
-            for patient_index in self.list_of_patients:
-                print(f"{(patient_index.get_pid()):<5}{(patient_index.get_name()):<23}{(patient_index.get_disease()):<16}{(patient_index.get_gender()):<16}{(patient_index.get_age())}")
+            print(f"{(patient_index.get_pid()):<5}{(patient_index.get_name()):<23}{(patient_index.get_disease()):<16}{(patient_index.get_gender()):<16}{(patient_index.get_age())}")
 
     #edits patient info by pid and updates txt file 
     def edit_patient_info_by_id(self):
