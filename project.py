@@ -170,7 +170,7 @@ class Patient:
     def set_disease(self, new_disease):
         self.disease = new_disease
     def set_gender(self, new_gender):
-        self.age = new_gender
+        self.gender = new_gender
     def set_age(self, new_age):
         self.age = new_age
 
