@@ -234,10 +234,10 @@ class PatientManager:
                 patient_index = Patient
                 pid_search_match = True
         if pid_search_match == True:
-            patient_index.set_name() = input("Enter new name: ")
-            patient_index.set_disease() = input("Enter new disease: ")
-            patient_index.set_gender() = input("Enter new gender: ")
-            patient_index.set_age() = input("Enter new age: ")
+            patient_index.set_name(input("Enter new name: "))
+            patient_index.set_disease(input("Enter new disease: ")) 
+            patient_index.set_gender(input("Enter new gender: "))
+            patient_index.set_age(input("Enter new age: ")) 
             with open('doctors.txt', 'w') as patientfile:
                 patientfile.write("id_Name_Disease_Gender_Age")
                 for patient in self.list_of_patients:
