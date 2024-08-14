@@ -271,13 +271,13 @@ class Manager:
     def display_menu():
         main_flag = True
         while main_flag == True:
-            doc_manager_instance = DoctorManager()
             print("Welcome to Alberta Hospital (AH) Managment system\nSelect from the following options, or select 3 to stop:\n1 - 	Doctors\n2 - 	Patients\n3 -	Exit Program")
             main_input = input(">>> ")
 
             if main_input == "1":
                 doctor_flag = True
                 while doctor_flag == True:
+                    doc_manager_instance = DoctorManager()
                     print("Doctors Menu:\n1 - Display Doctors list\n2 - Search for doctor by ID\n3 - Search for doctor by name\n4 - Add doctor\n5 - Edit doctor info\n6 - Back to the Main Menu")
                     doctor_input = input(">>> ")
                     if doctor_input == "1":
@@ -295,6 +295,20 @@ class Manager:
             
             elif main_input == "2":
                 patient_flag = True
+                while patient_flag == True:
+                    patient_manager_instance = PatientManager()
+                    print("Patients Menu:\n1 - Display patients list\n2 - Search for patient by ID\n3 - Add patient\n4 - Edit patient info\n5 - Back to the Main Menu")
+                    patient_input = input(">>> ")
+                    if patient_input == "1":
+                        patient_manager_instance.display_patients_list()
+                    elif patient_input == "2":
+                        patient_manager_instance.search_patient_by_id()
+                    elif patient_input == "3":
+                        patient_manager_instance.add_patient_to_file()
+                    elif patient_input == "4":
+                        patient_manager_instance.edit_patient_info_by_id()
+                    elif patient_input == "5":
+                        patient_flag = False
             
             elif main_input == "3":
                 main_flag = False
